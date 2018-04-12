@@ -10,31 +10,29 @@ public class Main {
     private static double coefAP = 0.1;    // Representa la letra griega alpha Valor utilizado para el error
 
     public static void main(String[] args) {
-        valoresEntrada(redNeuronal);
-
+        valoresEntrada(redNeuronal, new double[]{ 0.3, -0.1 });
     }
 
-    private static void valoresEntrada(ArrayList<Item> redNeuronal) {
-
+    private static void valoresEntrada(ArrayList<Item> redNeuronal, double[] pesosIniciales) {
         redNeuronal.add(new Item(
-                new int[]{ 1, 1 },            /* Variables x1, x2, ... xn */
-                1,                  /* Y deseada */
-                new double[]{ 0.3, -0.1 }    /* Pesos Inicialies */
+                new int[]{ 1, 1 },       /* Variables x1, x2, ... xn */
+                1,             /* Y deseada */
+                pesosIniciales          /* Pesos Inicialies */
         ));
 
         redNeuronal.add(new Item(
-                new int[]{ 1, 0 },           /* Variables x1, x2, ... xn */
-                0                  /* Y deseada */
+                new int[]{ 1, 0 },      /* Variables x1, x2, ... xn */
+                0             /* Y deseada */
         ));
 
         redNeuronal.add(new Item(
-                new int[]{ 0, 1 },           /* Variables x1, x2, ... xn */
-                0                  /* Y deseada */
+                new int[]{ 0, 1 },      /* Variables x1, x2, ... xn */
+                0             /* Y deseada */
         ));
 
         redNeuronal.add(new Item(
-                new int[]{ 0, 0 },           /* Variables x1, x2, ... xn */
-                0                  /* Y deseada */
+                new int[]{ 0, 0 },      /* Variables x1, x2, ... xn */
+                0             /* Y deseada */
         ));
     }
 }
