@@ -21,6 +21,12 @@ public class Item {
         this.pesosW = pesosW;
     }
 
+    public Item(int[] variablesX, int YDeseada) {
+        this.variablesX = variablesX;
+        this.YDeseada = YDeseada;
+    }
+
+
     public int[] getVariablesX() {
         return variablesX;
     }
