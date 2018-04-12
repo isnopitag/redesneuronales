@@ -16,7 +16,72 @@ public class Item {
     private double[] incrementoW;
 
     public Item(int[] variablesX, int YDeseada, double[] pesosW) {
-
+        this.variablesX = variablesX;
+        this.YDeseada = YDeseada;
+        this.pesosW = pesosW;
     }
 
+    public int[] getVariablesX() {
+        return variablesX;
+    }
+
+    public void setVariablesX(int[] variablesX) {
+        this.variablesX = variablesX;
+    }
+
+    public int getYDeseada() {
+        return YDeseada;
+    }
+
+    public void setYDeseada(int YDeseada) {
+        this.YDeseada = YDeseada;
+    }
+
+    public double[] getPesosW() {
+        return pesosW;
+    }
+
+    public void setPesosW(double[] pesosW) {
+        this.pesosW = pesosW;
+    }
+
+    public double getSumatoria() {
+        return sumatoria;
+    }
+
+    public void setSumatoria(double sumatoria) {
+        this.sumatoria = sumatoria;
+    }
+
+    public double getFuncionEntrada() {
+        return funcionEntrada;
+    }
+
+    public void setFuncionEntrada(double funcionEntrada) {
+        this.funcionEntrada = funcionEntrada;
+    }
+
+    public double getFuncionActivacion() {
+        return funcionActivacion;
+    }
+
+    public void setFuncionActivacion(double funcionActivacion) {
+        this.funcionActivacion = funcionActivacion;
+    }
+
+    public double getError() {
+        return error;
+    }
+
+    public void setError(double error) {
+        this.error = error;
+    }
+
+    public double[] getIncrementoW() {
+        return incrementoW;
+    }
+
+    public void setIncrementoW(double[] incrementoW) {
+        this.incrementoW = incrementoW;
+    }
 }
