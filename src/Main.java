@@ -11,6 +11,8 @@ public class Main {
 
     public static void main(String[] args) {
         valoresEntrada(redNeuronal, new double[]{ 0.3, -0.1 });
+
+        Perceptron.calculoSumatoria(redNeuronal.get(0), limite); // Calculo para la primer sumatoria
     }
 
     private static void valoresEntrada(ArrayList<Item> redNeuronal, double[] pesosIniciales) {
