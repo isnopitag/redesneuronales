@@ -15,4 +15,8 @@ public class Item {
     private double error;
     private double[] incrementoW;
 
+    public Item(int[] variablesX, int YDeseada, double[] pesosW) {
+
+    }
+
 }
