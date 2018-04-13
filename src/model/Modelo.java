@@ -12,6 +12,7 @@ public class Modelo {
     private double sumatoria;
     private double funcionEntrada;
     private double funcionActivacion;
+    private double funcionSalida;
     private double error;
     private double[] incrementoW;
 
