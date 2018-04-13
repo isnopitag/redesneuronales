@@ -70,14 +70,12 @@ public class Perceptron {
     public static boolean statusError(ArrayList<Modelo> redNeuronal) {
         boolean resultado = false;
 
-        double sum = 0.0;
         for (int i=0; i<redNeuronal.size(); i++) {
             Modelo item = redNeuronal.get(i);
-            sum += item.getError();
-        }
 
-        if (sum == 0.0) {
-            return true;
+            if (item.getError() > 0 || item.getError() < 0) {
+                resultado = true;
+            }
         }
 
         return resultado;
