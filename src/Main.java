@@ -74,12 +74,12 @@ public class Main {
 
         redNeuronal.add(new Modelo(
                 new int[]{ 1, 0 },      /* Variables x1, x2, ... xn */
-                0             /* Y deseada */
+                1             /* Y deseada */
         ));
 
         redNeuronal.add(new Modelo(
                 new int[]{ 0, 1 },      /* Variables x1, x2, ... xn */
-                0             /* Y deseada */
+                1             /* Y deseada */
         ));
 
         redNeuronal.add(new Modelo(

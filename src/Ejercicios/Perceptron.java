@@ -19,7 +19,6 @@ public class Perceptron {
             sumatoria += variables[i] * pesos[i];
         }
 
-
         resultado = sumatoria - limite;
 
         item.setSumatoria(resultado);
@@ -85,8 +84,7 @@ public class Perceptron {
         System.out.println("Variables - Y Deseada - Pesos - Sumatoria - Funcion Entrada - Funcion Activacion - Funcion Salida - Error - Incrementos");
         for (int i=0; i<redNeuronal.size(); i++) {
             Modelo item = redNeuronal.get(i);
-            System.out.println(Arrays.toString(item.getVariablesX()) + " - " + item.getYDeseada() + " - " + Arrays.toString(item.getPesosW()) + " - " + item.getSumatoria() + " - " + item.getFuncionEntrada() + " - " + item.getFuncionActivacion() + " - " + item.getFuncionSalida() + " - " + item.getError() + " - " + Arrays.toString(item.getIncrementoW()));
+            System.out.println(Arrays.toString(item.getVariablesX()) + " - " + item.getYDeseada() + " - " + Arrays.toString(item.getPesosW()) + " - " + String.format("%.1f", item.getSumatoria()) + " - " + String.format("%.1f", item.getFuncionEntrada()) + " - " + item.getFuncionActivacion() + " - " + item.getFuncionSalida() + " - " + item.getError() + " - " + Arrays.toString(item.getIncrementoW()));
         }
     }
-
 }
