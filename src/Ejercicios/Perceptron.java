@@ -23,8 +23,8 @@ public class Perceptron {
         item.setSumatoria(resultado);
     }
 
-    public static void calcularFuncionEntrada(Modelo item, double valorSumatoria) {
-
+    public static void calcularFuncionEntrada(Modelo item) {
+        item.setFuncionEntrada(item.getSumatoria());
     }
 
     public static void calcularFuncionActivacion(Modelo item, double funcionEntrada){
