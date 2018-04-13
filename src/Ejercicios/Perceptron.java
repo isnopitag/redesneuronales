@@ -3,6 +3,7 @@ package Ejercicios;
 import model.Modelo;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class Perceptron {
 
@@ -55,4 +56,19 @@ public class Perceptron {
 
         item.setIncrementoW(incrementosW);
     }
+
+    public static boolean statusError(ArrayList<Modelo> redNeuronal) {
+        boolean resultado = false;
+        for (int i=0; i<redNeuronal.size(); i++) {
+            Modelo item = redNeuronal.get(i);
+
+            if (item.getError() != (double) 0) {
+                resultado = true;
+            }
+        }
+
+        return resultado;
+    }
+
+
 }
