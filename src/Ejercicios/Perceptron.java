@@ -27,13 +27,17 @@ public class Perceptron {
         item.setFuncionEntrada(item.getSumatoria());
     }
 
-    public static void calcularFuncionActivacion(Modelo item, double funcionEntrada){
-        if(funcionEntrada>0){
+    public static void calcularFuncionActivacion(Modelo item){
+        if(item.getFuncionEntrada()>0){
             item.setFuncionActivacion(1);
         }else{
-            if (funcionEntrada<=0)
-            item.setFuncionActivacion(0);
+            if (item.getFuncionEntrada()<=0)
+                item.setFuncionActivacion(0);
         }
+    }
+
+    public static  void calcularFuncionSalida(Modelo item){
+        item.setFuncionSalida(item.getFuncionActivacion());
     }
 
     public static void calcularError(Modelo item) {
