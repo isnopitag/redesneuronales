@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Main {
 
-    private static ArrayList<Modelo> redNeuronal;
+    private static ArrayList<Modelo> redNeuronal = new ArrayList<>();
 
     private static double limite = 0.2;    // Representa la letra griega tetha Valor utlizado en la resta de la sumatoria, posibles valores entre el rago [0, 1]
     private static double coefAP = 0.1;    // Representa la letra griega alpha Valor utilizado para el error
@@ -20,7 +20,7 @@ public class Main {
         while(statusError) {
 
             System.out.println("Etapa " + etapa);
-            valoresEntrada(redNeuronal, pesosIniciales);
+            valoresEntrada(pesosIniciales);
 
             for (int i=0; i<redNeuronal.size(); i++) {
                 Modelo item = redNeuronal.get(i);
@@ -31,7 +31,16 @@ public class Main {
                 Perceptron.calcularFuncionSalida(item);
                 Perceptron.calcularError(item);
                 Perceptron.calcularIncrementosW(item, coefAP);
+
+                // Añadimos los nuevos incrementos
+
+                if ((i + 1) < redNeuronal.size()) {
+                    redNeuronal.get(i + 1).setPesosW(Perceptron.calcularIncrementos(item.getPesosW(), item.getIncrementoW()));
+                }
             }
+
+            // Area de impresion
+            Perceptron.imprimeResultados(redNeuronal);
 
             if (Perceptron.statusError(redNeuronal)) {
                // Tiene errores
@@ -41,13 +50,15 @@ public class Main {
                 statusError = false;
                 System.out.println("La red ha terminado de aprender");
             }
+
+            etapa++;
         }
 
 
         Perceptron.calculoSumatoria(redNeuronal.get(0), limite); // Calculo para la primer sumatoria
     }
 
-    private static void valoresEntrada(ArrayList<Modelo> redNeuronal, double[] pesosIniciales) {
+    private static void valoresEntrada(double[] pesosIniciales) {
         redNeuronal = new ArrayList<>();
 
         redNeuronal.add(new Modelo(

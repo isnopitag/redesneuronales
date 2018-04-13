@@ -4,6 +4,7 @@ import model.Modelo;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Perceptron {
 
@@ -57,12 +58,21 @@ public class Perceptron {
         item.setIncrementoW(incrementosW);
     }
 
+    public static double[] calcularIncrementos(double[] pesos, double[] incrementos) {
+        double[] resultado = new double[pesos.length];
+        for (int i=0; i<pesos.length; i++) {
+            resultado[i] = pesos[i] + incrementos[i];
+        }
+
+        return resultado;
+    }
+
     public static boolean statusError(ArrayList<Modelo> redNeuronal) {
         boolean resultado = false;
         for (int i=0; i<redNeuronal.size(); i++) {
             Modelo item = redNeuronal.get(i);
 
-            if (item.getError() != (double) 0) {
+            if (item.getError() != 0.0) {
                 resultado = true;
             }
         }
@@ -70,5 +80,12 @@ public class Perceptron {
         return resultado;
     }
 
+    public static void imprimeResultados(ArrayList<Modelo> redNeuronal) {
+        System.out.println("Variables - Y Deseada - Pesos - Sumatoria - Funcion Entrada - Funcion Activacion - Funcion Salida - Error - Incrementos");
+        for (int i=0; i<redNeuronal.size(); i++) {
+            Modelo item = redNeuronal.get(i);
+            System.out.println(Arrays.toString(item.getVariablesX()) + " - " + item.getYDeseada() + " - " + Arrays.toString(item.getPesosW()) + " - " + item.getSumatoria() + " - " + item.getFuncionEntrada() + " - " + item.getFuncionActivacion() + " - " + item.getFuncionSalida() + " - " + item.getError() + " - " + Arrays.toString(item.getIncrementoW()));
+        }
+    }
 
 }
