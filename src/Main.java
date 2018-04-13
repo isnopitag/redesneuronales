@@ -13,7 +13,7 @@ public class Main {
     private static double[] pesosIniciales = new double[]{0.3, -0.1};
 
     public static void main(String[] args) {
-
+        //Etapa por default se inica en 1
         int etapa = 1;
         boolean statusError = true; // El statusError será verdadero, si alguno de sus elementos no es cero
                                     // El statusError será falso, si todos sus elementos son cero
