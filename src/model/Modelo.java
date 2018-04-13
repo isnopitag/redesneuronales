@@ -76,6 +76,14 @@ public class Modelo {
         this.funcionActivacion = funcionActivacion;
     }
 
+    public double getFuncionSalida() {
+        return funcionSalida;
+    }
+
+    public void setFuncionSalida(double funcionSalida) {
+        this.funcionSalida = funcionSalida;
+    }
+
     public double getError() {
         return error;
     }
