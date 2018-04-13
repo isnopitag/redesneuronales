@@ -44,7 +44,15 @@ public class Perceptron {
         item.setError(item.getYDeseada() - item.getFuncionSalida());
     }
 
-    public static void calcularIncrementosW() {
+    public static void calcularIncrementosW(Modelo item, double coefAP) {
 
+        int[] variablesX = item.getVariablesX();
+        double[] incrementosW = new double[variablesX.length];
+
+        for (int i=0; i<variablesX.length; i++) {
+            incrementosW[i] = coefAP * variablesX[i] * item.getError();
+        }
+
+        item.setIncrementoW(incrementosW);
     }
 }
