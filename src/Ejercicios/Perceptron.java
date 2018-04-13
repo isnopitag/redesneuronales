@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
 
 public class Perceptron {
 
-    public static double calculoSumatoria(Modelo item, double limite) {
+    public static void calculoSumatoria(Modelo item, double limite) {
         double resultado = 0.0;
 
         int[] variables = item.getVariablesX();
@@ -19,9 +19,12 @@ public class Perceptron {
 
         DecimalFormat df = new DecimalFormat("#.#");
         resultado = sumatoria - limite;
-        System.out.println("Resultado: " + df.format(resultado));
 
-        return resultado;
+        item.setSumatoria(resultado);
+    }
+
+    public static void calcularFuncionEntrada(Modelo item, double valorSumatoria) {
+
     }
 
     public static void calcularFuncionActivacion(Modelo item, double funcionEntrada){
