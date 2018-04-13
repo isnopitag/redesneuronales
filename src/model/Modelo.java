@@ -1,6 +1,6 @@
 package model;
 
-public class Item {
+public class Modelo {
 
     /**
      * variablesX, pesosW y incrementoW tienen la misma longitud, a cada variable le corresponde un peso
@@ -15,13 +15,13 @@ public class Item {
     private double error;
     private double[] incrementoW;
 
-    public Item(int[] variablesX, int YDeseada, double[] pesosW) {
+    public Modelo(int[] variablesX, int YDeseada, double[] pesosW) {
         this.variablesX = variablesX;
         this.YDeseada = YDeseada;
         this.pesosW = pesosW;
     }
 
-    public Item(int[] variablesX, int YDeseada) {
+    public Modelo(int[] variablesX, int YDeseada) {
         this.variablesX = variablesX;
         this.YDeseada = YDeseada;
     }

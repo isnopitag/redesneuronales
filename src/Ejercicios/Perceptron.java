@@ -1,8 +1,12 @@
 package Ejercicios;
 
+import model.Modelo;
+
+import java.text.DecimalFormat;
+
 public class Perceptron {
 
-    public static double calculoSumatoria(Item item, double limite) {
+    public static double calculoSumatoria(Modelo item, double limite) {
         double result = 0.0;
 
         int[] variables = item.getVariablesX();
@@ -24,4 +28,15 @@ public class Perceptron {
         System.out.println("Result: " + df.format(result));
         return result;
     }
+
+    public static void calcularFuncionActivacion(Modelo item,double funcionEntrada){
+        if(funcionEntrada>0){
+            item.setFuncionActivacion(1);
+        }else{
+            if (funcionEntrada<=0)
+            item.setFuncionActivacion(0);
+        }
+    }
+
+
 }
