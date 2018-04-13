@@ -19,7 +19,7 @@ public class Perceptron {
             sumatoria += variables[i] * pesos[i];
         }
 
-        DecimalFormat df = new DecimalFormat("#.#");
+
         resultado = sumatoria - limite;
 
         item.setSumatoria(resultado);
@@ -58,7 +58,7 @@ public class Perceptron {
         item.setIncrementoW(incrementosW);
     }
 
-    public static double[] calcularIncrementos(double[] pesos, double[] incrementos) {
+    public static double[] calcularNuevosPesos(double[] pesos, double[] incrementos) {
         double[] resultado = new double[pesos.length];
         for (int i=0; i<pesos.length; i++) {
             resultado[i] = pesos[i] + incrementos[i];
@@ -69,12 +69,15 @@ public class Perceptron {
 
     public static boolean statusError(ArrayList<Modelo> redNeuronal) {
         boolean resultado = false;
+
+        double sum = 0.0;
         for (int i=0; i<redNeuronal.size(); i++) {
             Modelo item = redNeuronal.get(i);
+            sum += item.getError();
+        }
 
-            if (item.getError() != 0.0) {
-                resultado = true;
-            }
+        if (sum == 0.0) {
+            return true;
         }
 
         return resultado;

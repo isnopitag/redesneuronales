@@ -33,9 +33,9 @@ public class Main {
                 Perceptron.calcularIncrementosW(item, coefAP);
 
                 // Añadimos los nuevos incrementos
-
                 if ((i + 1) < redNeuronal.size()) {
-                    redNeuronal.get(i + 1).setPesosW(Perceptron.calcularIncrementos(item.getPesosW(), item.getIncrementoW()));
+                    Modelo itemSiguiente = redNeuronal.get(i + 1);
+                    itemSiguiente.setPesosW(Perceptron.calcularNuevosPesos(item.getPesosW(), item.getIncrementoW()));
                 }
             }
 
@@ -43,8 +43,13 @@ public class Main {
             Perceptron.imprimeResultados(redNeuronal);
 
             if (Perceptron.statusError(redNeuronal)) {
-               // Tiene errores
-                pesosIniciales = redNeuronal.get(redNeuronal.size() - 1).getIncrementoW();  // Obtenemos los ultimos pesos para la siguiente etapa
+                // Tiene errores
+
+                double[] pesosW = redNeuronal.get(redNeuronal.size() - 1).getPesosW();
+                double[] incrementosW = redNeuronal.get(redNeuronal.size() - 1).getIncrementoW();
+
+                pesosIniciales = Perceptron.calcularNuevosPesos(pesosW, incrementosW);
+
             } else {
                 // No tiene errores
                 statusError = false;
