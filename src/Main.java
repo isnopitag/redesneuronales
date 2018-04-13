@@ -13,10 +13,47 @@ public class Main {
     private static double[] pesosIniciales = new double[]{0.3, -0.1};
 
     public static void main(String[] args) {
+        apendrizaje();
+        evaluacion();
+    }
+
+    private static void evaluacion() {
+
+        System.out.println("");
+        System.out.println("");
+        System.out.println("---------------------");
+        System.out.println("Proceso de evaluacion");
+        System.out.println("---------------------");
+
+        pesosIniciales = redNeuronal.get(redNeuronal.size() - 1).getPesosW();
+        valoresEntrada(pesosIniciales);
+
+        for (int i=0; i<redNeuronal.size(); i++) {
+            Modelo item = redNeuronal.get(i);
+
+            Perceptron.calculoSumatoria(item, limite);
+            Perceptron.calcularFuncionEntrada(item);
+            Perceptron.calcularFuncionActivacion(item);
+            Perceptron.calcularFuncionSalida(item);
+            Perceptron.calcularError(item);
+            Perceptron.calcularIncrementosW(item, coefAP);
+
+            // Añadimos los nuevos incrementos
+            if ((i + 1) < redNeuronal.size()) {
+                Modelo itemSiguiente = redNeuronal.get(i + 1);
+                itemSiguiente.setPesosW(Perceptron.calcularNuevosPesos(item.getPesosW(), item.getIncrementoW()));
+            }
+        }
+
+        // Area de impresion
+        Perceptron.imprimeResultados(redNeuronal);
+    }
+
+    private static void apendrizaje() {
         //Etapa por default se inica en 1
         int etapa = 1;
         boolean statusError = true; // El statusError será verdadero, si alguno de sus elementos no es cero
-                                    // El statusError será falso, si todos sus elementos son cero
+        // El statusError será falso, si todos sus elementos son cero
         while(statusError) {
 
             System.out.println("Etapa " + etapa);
@@ -58,9 +95,6 @@ public class Main {
 
             etapa++;
         }
-
-
-        Perceptron.calculoSumatoria(redNeuronal.get(0), limite); // Calculo para la primer sumatoria
     }
 
     private static void valoresEntrada(double[] pesosIniciales) {
@@ -74,12 +108,12 @@ public class Main {
 
         redNeuronal.add(new Modelo(
                 new int[]{ 1, 0 },      /* Variables x1, x2, ... xn */
-                1             /* Y deseada */
+                0             /* Y deseada */
         ));
 
         redNeuronal.add(new Modelo(
                 new int[]{ 0, 1 },      /* Variables x1, x2, ... xn */
-                1             /* Y deseada */
+                0             /* Y deseada */
         ));
 
         redNeuronal.add(new Modelo(
