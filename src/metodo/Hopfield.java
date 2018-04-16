@@ -80,6 +80,19 @@ public class Hopfield {
         return matrizIdentidad;
     }
 
+    public static void calcularDistanciaHamming(int[][] prueba1, int[][] prueba2){
+
+        int n = prueba1.length*prueba2.length;
+        System.out.println("N es: "+n);
+        int distancia=0;
+        for (int j=0;j<prueba1.length;j++){
+            for (int k=0; k<prueba2.length;k++ ){
+                distancia+=prueba1[j][k]*prueba2[j][k];
+            }
+        }
+        System.out.println("Distancia de Hamming es: "+distancia);
+    }
+
     private static void imprimeMatriz(int[][] matriz) {
         String strMatriz = "";
         for (int x=0; x<matriz.length; x++) {
@@ -91,4 +104,6 @@ public class Hopfield {
 
         System.out.println(strMatriz);
     }
+
 }
+

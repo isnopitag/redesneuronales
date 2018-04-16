@@ -8,6 +8,8 @@ public class MainHopfield {
     public static void main(String[] args) {
         cargaPatrones();
         Hopfield.calcularMatrizEntrenamiento(P1);
+        
+        Hopfield.calcularDistanciaHamming(P1,P2);
     }
 
     private static void cargaPatrones() {
