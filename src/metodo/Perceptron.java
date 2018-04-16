@@ -1,8 +1,7 @@
-package Ejercicios;
+package metodo;
 
 import model.Modelo;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 

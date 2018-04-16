@@ -1,9 +1,9 @@
-import Ejercicios.Perceptron;
+import metodo.Perceptron;
 import model.Modelo;
 
 import java.util.ArrayList;
 
-public class Main {
+public class MainPerceptron {
 
     private static ArrayList<Modelo> redNeuronal = new ArrayList<>();
 
@@ -102,18 +102,18 @@ public class Main {
 
         redNeuronal.add(new Modelo(
                 new int[]{ 1, 1 },       /* Variables x1, x2, ... xn */
-                1,             /* Y deseada */
+                0,             /* Y deseada */
                 pesosIniciales          /* Pesos Inicialies */
         ));
 
         redNeuronal.add(new Modelo(
                 new int[]{ 1, 0 },      /* Variables x1, x2, ... xn */
-                0             /* Y deseada */
+                1             /* Y deseada */
         ));
 
         redNeuronal.add(new Modelo(
                 new int[]{ 0, 1 },      /* Variables x1, x2, ... xn */
-                0             /* Y deseada */
+                1             /* Y deseada */
         ));
 
         redNeuronal.add(new Modelo(
