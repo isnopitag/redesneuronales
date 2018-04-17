@@ -11,7 +11,12 @@ public class MainHopfield {
 
         Hopfield.calcularDistanciaHamming(P1,P2);
         
+
+        Hopfield.sumarMatrices(Hopfield.calcularMatrizEntrenamiento(P1), Hopfield.calcularMatrizEntrenamiento(P2));
+
         Hopfield.CalcularRecuperacion(P1,P2);
+        Hopfield.calcularDistanciaHamming(P1, P2);
+
     }
 
     private static void cargaPatrones() {

@@ -8,18 +8,17 @@ public class Hopfield {
      */
 
     public static int[][] calcularMatrizEntrenamiento(int[][] matriz) {
-
         int[][] matrizT = calcularMatrizTranspuesta(matriz);
         int[][] matrizResultante = multiplicarMatrices(matriz, matrizT);
-
         int[][] matrizIdentidad = calcularMatrizIdentidad(matriz);
-
-        imprimeMatriz(matrizIdentidad);
-
-        return matrizResultante;
+        int[][] resultado = restarMatrices(matrizResultante, matrizIdentidad);
+        System.out.println("---");
+        imprimeMatriz(resultado);
+        System.out.println("---");
+        return resultado;
     }
 
-    private static int[][] calcularMatrizTranspuesta(int[][] matriz) {
+    public static int[][] calcularMatrizTranspuesta(int[][] matriz) {
         int[][] matrizT = new int[matriz[0].length][matriz.length];
 
         for (int x=0; x < matriz.length; x++) {
@@ -27,11 +26,11 @@ public class Hopfield {
                 matrizT[y][x] = matriz[x][y];
             }
         }
-
+        //imprimeMatriz(matrizT);
         return matrizT;
     }
 
-    private static int[][] multiplicarMatrices(int[][] m1, int[][] m2) {
+    public static int[][] multiplicarMatrices(int[][] m1, int[][] m2) {
 
         int fil_m1 = m1.length;
         int col_m1 = m1[0].length;
@@ -60,6 +59,39 @@ public class Hopfield {
         return multiplicacion;
     }
 
+    public static int[][] restarMatrices(int[][] m1, int[][] m2) {
+
+        int filas = m1.length;
+        int columnas = m1[0].length;
+
+        int[][] resta = new int[filas][columnas];
+
+        for (int x=0; x<filas; x++) {
+            for (int y=0; y<columnas; y++) {
+                resta[x][y] = m1[x][y] - m2[x][y];
+            }
+        }
+
+        return resta;
+    }
+
+    public static int[][] sumarMatrices(int[][] m1, int[][] m2) {
+
+        int filas = m1.length;
+        int columnas = m1[0].length;
+
+        int[][] suma = new int[filas][columnas];
+
+        for (int x=0; x<filas; x++) {
+            for (int y=0; y<columnas; y++) {
+                suma[x][y] = m1[x][y] + m2[x][y];
+            }
+        }
+
+        imprimeMatriz(suma);
+        return suma;
+    }
+
     private static int[][] calcularMatrizIdentidad(int[][] matriz) {
 
         int filas = matriz.length;
@@ -67,8 +99,8 @@ public class Hopfield {
 
         int[][] matrizIdentidad = new int[filas][columnas];
 
-        for (int x=0; x < filas; x++) {
-            for (int y=0; y < columnas; y++) {
+        for (int x=0; x<filas; x++) {
+            for (int y=0; y<columnas; y++) {
                 if (x == y) {
                     matrizIdentidad[x][y] = 1;
                 } else {
@@ -80,17 +112,20 @@ public class Hopfield {
         return matrizIdentidad;
     }
 
-    public static void calcularDistanciaHamming(int[][] prueba1, int[][] prueba2){
+    public static int calcularDistanciaHamming(int[][] prueba1, int[][] prueba2){
 
-        int n = prueba1.length*prueba2.length;
-        System.out.println("N es: "+n);
-        int distancia=0;
+        int n = prueba1.length * prueba2.length;
+        System.out.println("N es: " + n);
+
+        int distancia = 0;
         for (int j=0;j<prueba1.length;j++){
             for (int k=0; k<prueba2.length;k++ ){
-                distancia+=prueba1[j][k]*prueba2[j][k];
+                distancia += prueba1[j][k] * prueba2[j][k];
             }
         }
+
         System.out.println("Distancia de Hamming es: "+distancia);
+        return distancia;
     }
 
     private static void imprimeMatriz(int[][] matriz) {
@@ -104,7 +139,6 @@ public class Hopfield {
 
         System.out.println(strMatriz);
     }
-
     public static void CalcularRecuperacion(int[][] prueba1,int[][] prueba2){
 
         int m=2;
@@ -119,7 +153,5 @@ public class Hopfield {
         }
 
     }
-
-
 }
 
