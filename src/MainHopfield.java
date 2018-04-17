@@ -24,7 +24,7 @@ public class MainHopfield {
         /* Ortogonalidad */
         Hopfield.calcularDistanciaHamming(P1, P2);
 
-        /* Entrenamiento*/
+        /* Entrenamiento */
         int[][] w = Hopfield.sumarMatrices(Hopfield.calcularMatrizEntrenamiento(P1), Hopfield.calcularMatrizEntrenamiento(P2));
 
         System.out.println("");
