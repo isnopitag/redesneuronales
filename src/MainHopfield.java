@@ -6,19 +6,28 @@ public class MainHopfield {
     private static int[][] P2 = new int[4][4];
 
     public static void main(String[] args) {
+
+        imprime("1) Definicion de patrones \n");
+
         /* Definición de patrones */
         definicionPatrones();
+
+        imprime("2) Recuperacion \n");
 
         /* Recuperacion */
         Hopfield.CalcularRecuperacion(P1, P2);
 
+        imprime("3) Orgonalidad \n");
+
         /* Ortogonalidad */
         Hopfield.calcularDistanciaHamming(P1, P2);
 
+        imprime("4) Entrenamiento\n");
         /* Entrenamiento*/
         int[][] w = Hopfield.sumarMatrices(Hopfield.calcularMatrizEntrenamiento(P1), Hopfield.calcularMatrizEntrenamiento(P2));
 
         /* Ejecución */
+        imprime("5) Ejecución\n");
 
         int[][] patronPruebaAnterior = new int[4][4];
         int[][] patronPrueba = new int[4][4];
@@ -111,5 +120,9 @@ public class MainHopfield {
         P2[3][1] = 1;
         P2[3][2] = 1;
         P2[3][3] = 1;
+    }
+
+    public static void  imprime(String cadena){
+        System.out.println(cadena);
     }
 }
