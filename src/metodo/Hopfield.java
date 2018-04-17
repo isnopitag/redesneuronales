@@ -12,9 +12,6 @@ public class Hopfield {
         int[][] matrizResultante = multiplicarMatrices(matriz, matrizT);
         int[][] matrizIdentidad = calcularMatrizIdentidad(matriz);
         int[][] resultado = restarMatrices(matrizResultante, matrizIdentidad);
-        System.out.println("---");
-        imprimeMatriz(resultado);
-        System.out.println("---");
         return resultado;
     }
 
@@ -88,7 +85,7 @@ public class Hopfield {
             }
         }
 
-        imprimeMatriz(suma);
+        //imprimeMatriz(suma);
         return suma;
     }
 
@@ -128,7 +125,7 @@ public class Hopfield {
         return distancia;
     }
 
-    private static void imprimeMatriz(int[][] matriz) {
+    public static void imprimeMatriz(int[][] matriz) {
         String strMatriz = "";
         for (int x=0; x<matriz.length; x++) {
             for (int y=0; y<matriz[x].length; y++) {
@@ -136,7 +133,6 @@ public class Hopfield {
             }
             strMatriz += "\n";
         }
-
         System.out.println(strMatriz);
     }
 
@@ -146,13 +142,37 @@ public class Hopfield {
         int n=prueba1.length*prueba2.length;
 
         if(m<=0.138*n){
-            System.out.println("La recuperacion es Buena de:"+0.138*n);
+            System.out.println("La recuperacion es Buena de: " + 0.138*n);
         }
 
         if(m<=(n/(4*Math.log(n)))){
-                System.out.println("La recuperacion es Percpecta de:"+(n/(4*Math.log(n))));
+                System.out.println("La recuperacion es Percpecta de: " + (n/(4*Math.log(n))));
         }
 
+    }
+
+    public static int[][] calcularFuncionActivacion(int[][] funcionEntrada) {
+
+        int filas = funcionEntrada.length;
+        int columnas = funcionEntrada[0].length;
+
+        int[][] funcionActivacion = new int[filas][columnas];
+
+        for (int x=0; x<filas; x++) {
+            for (int y=0; y<columnas; y++) {
+                if (funcionEntrada[x][y] > 0) {
+                    funcionActivacion[x][y] = 1;
+                } else {
+                    funcionActivacion[x][y] = -1;
+                }
+            }
+        }
+
+        return funcionActivacion;
+    }
+
+    public static int[][] calcularFuncionSalida(int[][] funcionActivacion) {
+        return funcionActivacion;
     }
 }
 
