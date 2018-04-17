@@ -139,6 +139,7 @@ public class Hopfield {
 
         System.out.println(strMatriz);
     }
+
     public static void CalcularRecuperacion(int[][] prueba1,int[][] prueba2){
 
         int m=2;

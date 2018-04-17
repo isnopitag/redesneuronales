@@ -6,20 +6,20 @@ public class MainHopfield {
     private static int[][] P2 = new int[4][4];
 
     public static void main(String[] args) {
-        cargaPatrones();
-        Hopfield.calcularMatrizEntrenamiento(P1);
+        /* Definición de patrones */
+        definicionPatrones();
 
-        Hopfield.calcularDistanciaHamming(P1,P2);
-        
+        /* Recuperacion */
+        Hopfield.CalcularRecuperacion(P1, P2);
 
-        Hopfield.sumarMatrices(Hopfield.calcularMatrizEntrenamiento(P1), Hopfield.calcularMatrizEntrenamiento(P2));
-
-        Hopfield.CalcularRecuperacion(P1,P2);
+        /* Ortogonalidad */
         Hopfield.calcularDistanciaHamming(P1, P2);
 
+        /* Entrenamiento*/
+        int[][] w = Hopfield.sumarMatrices(Hopfield.calcularMatrizEntrenamiento(P1), Hopfield.calcularMatrizEntrenamiento(P2));
     }
 
-    private static void cargaPatrones() {
+    private static void definicionPatrones() {
 
         /*  -1  -1  1  -1
             -1  -1  1  -1
