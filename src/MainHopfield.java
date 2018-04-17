@@ -1,72 +1,87 @@
 import metodo.Hopfield;
 
+import java.util.Arrays;
+
 public class MainHopfield {
 
     private static int[][] P1 = new int[4][4];
     private static int[][] P2 = new int[4][4];
 
     public static void main(String[] args) {
-
-        imprime("1) Definicion de patrones \n");
-
         /* Definición de patrones */
         definicionPatrones();
 
-        imprime("2) Recuperacion \n");
+        System.out.println(" ------ MATRICES DE ENTRADA ------ ");
+
+        System.out.println(" MATRIZ P1");
+        Hopfield.imprimeMatriz(P1);
+        System.out.println(" MATRIZ P2");
+        Hopfield.imprimeMatriz(P2);
 
         /* Recuperacion */
         Hopfield.CalcularRecuperacion(P1, P2);
 
-        imprime("3) Orgonalidad \n");
-
         /* Ortogonalidad */
         Hopfield.calcularDistanciaHamming(P1, P2);
 
-        imprime("4) Entrenamiento\n");
         /* Entrenamiento*/
         int[][] w = Hopfield.sumarMatrices(Hopfield.calcularMatrizEntrenamiento(P1), Hopfield.calcularMatrizEntrenamiento(P2));
 
+        System.out.println("");
+        System.out.println(" ------ MATRICES DE PESOS ------ ");
+        Hopfield.imprimeMatriz(w);
+
         /* Ejecución */
-        imprime("5) Ejecución\n");
 
         int[][] patronPruebaAnterior = new int[4][4];
         int[][] patronPrueba = new int[4][4];
 
         patronPrueba[0][0] = -1;
-        patronPrueba[0][1] = -1;
+        patronPrueba[0][1] = 1;
         patronPrueba[0][2] = 1;
-        patronPrueba[0][3] = -1;
+        patronPrueba[0][3] = 1;
 
         patronPrueba[1][0] = -1;
-        patronPrueba[1][1] = -1;
+        patronPrueba[1][1] = 1;
         patronPrueba[1][2] = 1;
-        patronPrueba[1][3] = -1;
+        patronPrueba[1][3] = 1;
 
         patronPrueba[2][0] = -1;
-        patronPrueba[2][1] = -1;
+        patronPrueba[2][1] = 1;
         patronPrueba[2][2] = 1;
-        patronPrueba[2][3] = -1;
+        patronPrueba[2][3] = 1;
 
         patronPrueba[3][0] = -1;
-        patronPrueba[3][1] = -1;
+        patronPrueba[3][1] = 1;
         patronPrueba[3][2] = 1;
-        patronPrueba[3][3] = -1;
+        patronPrueba[3][3] = 1;
 
-        Hopfield.imprimeMatriz(w);
+        System.out.println(" ------ EJECUCIÓN DEL SISTEMA ------ ");
 
-        while (!java.util.Arrays.deepEquals(patronPrueba, patronPruebaAnterior)) {
+        int c = 1;
+        while (!Arrays.deepEquals(patronPrueba, patronPruebaAnterior)) {
             patronPruebaAnterior = patronPrueba;
 
-            int[][] funcionEntrada = Hopfield.multiplicarMatrices(patronPrueba, w);
-            Hopfield.imprimeMatriz(funcionEntrada);
-            int[][] funcionActivacion = Hopfield.calcularFuncionActivacion(funcionEntrada);
-            int[][] funcionSalida = Hopfield.calcularFuncionSalida(funcionActivacion);
+            System.out.println("");
 
+            System.out.println(" -- MATRIZ DE ENTRADA");
+            Hopfield.imprimeMatriz(patronPrueba);
+
+            int[][] funcionEntrada = Hopfield.multiplicarMatrices(patronPrueba, w);
+            System.out.println(" -- FUNCIÓN DE ENTRADA " + c);
+            Hopfield.imprimeMatriz(funcionEntrada);
+
+            int[][] funcionActivacion = Hopfield.calcularFuncionActivacion(funcionEntrada);
+            System.out.println(" -- FUNCIÓN DE ACTIVACIÓN " + c);
+            Hopfield.imprimeMatriz(funcionActivacion);
+
+            int[][] funcionSalida = Hopfield.calcularFuncionSalida(funcionActivacion);
+            System.out.println(" -- FUNCIÓN DE SALIDA " + c);
+            Hopfield.imprimeMatriz(funcionSalida);
+
+            c++;
             patronPrueba = funcionSalida;
         }
-
-        System.out.println(" ------ MATRIZ SALIDA ------");
-        Hopfield.imprimeMatriz(patronPrueba);
     }
 
     private static void definicionPatrones() {
@@ -120,9 +135,5 @@ public class MainHopfield {
         P2[3][1] = 1;
         P2[3][2] = 1;
         P2[3][3] = 1;
-    }
-
-    public static void  imprime(String cadena){
-        System.out.println(cadena);
     }
 }
