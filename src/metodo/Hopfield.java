@@ -105,5 +105,21 @@ public class Hopfield {
         System.out.println(strMatriz);
     }
 
+    public static void CalcularRecuperacion(int[][] prueba1,int[][] prueba2){
+
+        int m=2;
+        int n=prueba1.length*prueba2.length;
+
+        if(m<=0.138*n){
+            System.out.println("La recuperacion es Buena de:"+0.138*n);
+        }
+
+        if(m<=(n/(4*Math.log(n)))){
+                System.out.println("La recuperacion es Percpecta de:"+(n/(4*Math.log(n))));
+        }
+
+    }
+
+
 }
 
