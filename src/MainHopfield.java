@@ -36,22 +36,22 @@ public class MainHopfield {
         int[][] patronPruebaAnterior = new int[4][4];
         int[][] patronPrueba = new int[4][4];
 
-        patronPrueba[0][0] = -1;
+        patronPrueba[0][0] = 1;
         patronPrueba[0][1] = 1;
         patronPrueba[0][2] = 1;
         patronPrueba[0][3] = 1;
 
-        patronPrueba[1][0] = -1;
-        patronPrueba[1][1] = 1;
-        patronPrueba[1][2] = 1;
+        patronPrueba[1][0] = 1;
+        patronPrueba[1][1] = -1;
+        patronPrueba[1][2] = -1;
         patronPrueba[1][3] = 1;
 
-        patronPrueba[2][0] = -1;
-        patronPrueba[2][1] = 1;
-        patronPrueba[2][2] = 1;
+        patronPrueba[2][0] = 1;
+        patronPrueba[2][1] = -1;
+        patronPrueba[2][2] = -1;
         patronPrueba[2][3] = 1;
 
-        patronPrueba[3][0] = -1;
+        patronPrueba[3][0] = 1;
         patronPrueba[3][1] = 1;
         patronPrueba[3][2] = 1;
         patronPrueba[3][3] = 1;
