@@ -2,37 +2,52 @@ package metodo;
 
 public class Kohonen {
 
-    public static void calcularDistanciaEcladiana(int[][] matrizEntrada, double[][] matrizPesos){
+        public static void calcularDistanciaEcladiana(int[][] matrizEntrada, double[][] matrizPesos){
 
-        double d[] = new double[matrizPesos.length];
-        System.out.println(matrizEntrada.length+" "+matrizPesos.length+" "+matrizPesos[0].length);
-
-        for (int j=0;j<matrizEntrada.length;j++){
-            for (int k=0; k<matrizPesos[0].length;k++){
-                for (int i=0;i<matrizPesos.length;i++) {
-                    /*d[i]+=Math.pow((matrizEntrada[k][j] - matrizPesos[k][i]),2);
-                    System.out.println(matrizEntrada[i][j] + " " + matrizPesos[k][i]+" "+d[i]);*/
-                    //System.out.println(matrizEntrada[k][j] + " " + matrizPesos[j][i]);
-                    if(i==0){
-                        d[0]+=Math.pow((matrizEntrada[k][j] - matrizPesos[i][k]),2);
-                       // System.out.println(matrizEntrada[k][j]+ " " + matrizPesos[i][k]);
-                        System.out.println(""+i);
-                    }if(i%2==0){
-                            d[1]+=Math.pow((matrizEntrada[k][j] - matrizPesos[i][k]),2);
-                          //  System.out.println(matrizEntrada[k][j]+ " " + matrizPesos[i][k]);
-                        System.out.println(""+i);
-                    }else{
-                        if(i%2!=0){
-                            d[0]+=Math.pow((matrizEntrada[k][j] - matrizPesos[i][k]),2);
-                            //System.out.println(matrizEntrada[k][j]+ " " + matrizPesos[i][k]);
-                        System.out.println(""+i);
-                        }}
+            for (int i = 0; i < matrizEntrada.length; i++) {
+                double d[] = new double[matrizPesos.length];
+                for (int j = 0; j < matrizPesos[0].length ; j++) {
+                    for (int k = 0; k < matrizPesos.length ; k++) {
+                        //System.out.println(matrizEntrada[i][j]+" "+matrizPesos[k][j]);
+                        d[k]+= Math.pow((matrizEntrada[i][j] - matrizPesos[k][j]), 2);
                     }
+
                 }
-                //System.out.println(matrizEntrada[k][j] + " " + matrizPesos[0][k]);
+
             }
-            System.out.println(d[0]+"   "+d[1]+"\n");
+
         }
+
+        public static void calcularNuevaMatrizDePesos(double[][] matrizPesos, int index){
+            double nuevaMatrizPesos[][];
+            for (int i = 0; i < matrizPesos.length; i++) {
+                
+            }
+        }
+
+    public static void imprimeArrayDouble(double[] arrayDistancia) {
+        String strMatriz = "";
+        for (int x=0; x<arrayDistancia.length; x++) {
+                strMatriz += arrayDistancia[x]+ " ";
+            strMatriz += "\n";
+        }
+        System.out.println(strMatriz);
+    }
+
+    public static int obtenerMenorDistancia(double[] arrayDistancia){
+            double menor=0.0;
+            int    index=0;
+        for (int i = 0; i < arrayDistancia.length; i++) {
+            if(i==0){
+                menor=arrayDistancia[i];
+                index=0;
+            }else if(menor>arrayDistancia[i]){
+                menor=arrayDistancia[i];
+                index=i;
+            }
+        }
+        return index;
+    }
 }
 
 
