@@ -1,4 +1,3 @@
-import metodo.Hopfield;
 import metodo.Kohonen;
 
 public class MainKohonen {
@@ -6,7 +5,7 @@ public class MainKohonen {
     //Topological Radius
     private static double R = 0;
     //Learning Rate
-    private  double alfa = 0.6;
+    private static double alfa = 0.6;
 
     private static double[][] matrizPesos= {{0.2,0.6,0.5,0.9},
                                             {0.8,0.4,0.7,0.3}};
@@ -19,7 +18,7 @@ public class MainKohonen {
 
     public static void main(String[] args) {
 
-        Kohonen.calcularDistanciaEcladiana(matrizEntrada,matrizPesos);
+        Kohonen.calcularDistanciaEcladiana(matrizEntrada,matrizPesos,alfa);
 
     }
 }
