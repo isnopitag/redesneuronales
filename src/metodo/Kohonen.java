@@ -4,7 +4,23 @@ import java.util.Arrays;
 
 public class Kohonen {
 
-    public static void calcularDistanciaEcladiana(int[][] matrizEntrada, double[][] matrizPesos, double alfa) {
+    public static int EJECUCION(int[] entradas, double[][] matrizPesos) {
+
+        int nFilasPesos = matrizPesos.length;
+        double[] D = new double[nFilasPesos];
+
+        for (int i=0; i<nFilasPesos; i++) {
+            double[] pesos = matrizPesos[i];
+
+            for (int j=0; j<pesos.length; j++) {
+                D[i] += Math.pow(entradas[j] - pesos[j], 2);
+            }
+        }
+
+        return indiceMenor(D);
+    }
+
+    public static void ENTRENAMIENTO(int[][] matrizEntrada, double[][] matrizPesos, double alfa) {
 
         int nFilasEntradas = matrizEntrada.length;
         int nFilasPesos = matrizPesos.length;

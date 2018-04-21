@@ -1,5 +1,7 @@
 import metodo.Kohonen;
 
+import java.util.Arrays;
+
 public class MainKohonen {
 
     // Topological Radius
@@ -23,11 +25,18 @@ public class MainKohonen {
     public static void main(String[] args) {
 
         for (int i=0; i<100; i++) {
-            Kohonen.calcularDistanciaEcladiana(matrizEntrada, matrizPesos, alfa);
+            Kohonen.ENTRENAMIENTO(matrizEntrada, matrizPesos, alfa);
             alfa = alfa/2;
         }
 
-        //Kohonen.calcularDistanciaEcladiana(matrizEntrada, matrizPesos, alfa);
+        System.out.println("Matriz de pesos de entrenamiento OFICIAL");
+        Kohonen.imprimeMatriz(matrizPesos);
 
+        int nFilasEntradas = matrizEntrada.length;
+        for (int i = 0; i < nFilasEntradas; i++) {
+            int[] entradas = matrizEntrada[i];
+            int cluster = Kohonen.EJECUCION(entradas, matrizPesos);
+            System.out.println(Arrays.toString(entradas) + ", Cluster: " + cluster);
+        }
     }
 }
