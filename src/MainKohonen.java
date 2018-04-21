@@ -22,7 +22,7 @@ public class MainKohonen {
 
     public static void main(String[] args) {
 
-        Kohonen.calcularDistanciaEcladiana(matrizEntrada, matrizPesos);
+        Kohonen.calcularDistanciaEcladiana(matrizEntrada, matrizPesos, alfa);
         //Kohonen.calcularDistanciaEcladiana(matrizEntrada, matrizPesos, alfa);
 
     }
