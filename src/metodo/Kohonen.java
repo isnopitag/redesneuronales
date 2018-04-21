@@ -14,11 +14,10 @@ public class Kohonen {
             int[] entradas = matrizEntrada[i];
             // System.out.println(Arrays.toString(entradas));
 
-            double[] pesos = new double[matrizPesos[0].length]; // Requerido para el calculo de los nuevos pesos
             double[] D = new double[nFilasPesos];
 
             for (int j = 0; j < nFilasPesos; j++) {
-                pesos = matrizPesos[j];
+                double[] pesos = matrizPesos[j];
                 // System.out.println(Arrays.toString(pesos));
 
                 for (int k = 0; k < pesos.length; k++) {
@@ -30,8 +29,7 @@ public class Kohonen {
             System.out.println("Distancias : " + Arrays.toString(D));
 
             int J = indiceMenor(D);
-            matrizPesos[J] = actualizarPesos(alfa, pesos, entradas);
-
+            matrizPesos[J] = actualizarPesos(alfa, matrizPesos[J], entradas);
 
             try {
 
@@ -39,6 +37,7 @@ public class Kohonen {
                 System.out.println(Arrays.toString(matrizPesos[J]));
 
             } catch (Exception ex) {
+
                 System.out.println(Arrays.toString(matrizPesos[J]));
                 System.out.println(Arrays.toString(matrizPesos[J + 1]));
             }
@@ -56,6 +55,7 @@ public class Kohonen {
 
         return nuevosPesos;
     }
+
     /*public static void calcularDistanciaEcladiana(int[][] matrizEntrada, double[][] matrizPesos, double alfa){
 
         for (int i = 0; i < matrizEntrada.length; i++) {
@@ -88,6 +88,20 @@ public class Kohonen {
         System.out.println("\n");
         return matrizPesos;
     }
+
+    /*public static int indiceMenor(double[] D) {
+        int indice = 0;
+        double minVal = D[0];
+
+        for (int i=0; i<D.length; i++) {
+            if (D[i] <= minVal) {
+                indice = i;
+                minVal = D[i];
+            }
+        }
+
+        return indice;
+    }*/
 
     public static int indiceMenor(double[] numbers) {
 
